@@ -1,0 +1,25 @@
+<div>
+  <form id="app_form" (ngSubmit)="onSubmit()">
+    <input type="text" name="name" placeholder="" [(ngModel)]="myModel.name"> <br>
+    <input type="text" name="age" placeholder="" [(ngModel)]="myModel.age"> <br>
+    <select name="color" [(ngModel)]="myModel.fav_color">
+      <option *ngFor="let color of colors" [selected]="color.id == 1">{{color.color}}</option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="userlist">
+    <div *ngIf="userlist.length < 1">
+      <div class="alertMsg">No user Exist</div>
+    </div>
+    <div *ngIf="userlist.length > 0">
+      <div class="user" *ngFor="let user of userlist">
+        <div class="username">{{user.name}}</div>
+        <div class="user-info">
+          <div class="age">age:<span>{{user.age}}</span></div>
+          <div class="fav_colour">favourite colour:<span>{{user.fav_color}}</span></div>
+          <button (click)="removeUser(user.name)">remove user</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
